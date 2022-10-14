@@ -1,4 +1,3 @@
-
 <div class="main-content">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
@@ -7,8 +6,15 @@
                 <div *ngFor="let tempProduct of products" class="col-md-3">
 
                     <div class="product-box">
-                        <img src="{{ tempProduct.imageUrl }}" height="30px" class="img-responsive">
-                        <h1>{{ tempProduct.name }}</h1>
+
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <img src="{{ tempProduct.imageUrl }}" height="30px" class="img-responsive">
+                        </a>
+
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <h1>{{ tempProduct.name }}</h1>
+                        </a>
+
                         <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
                         <a href="#" class="primary-btn">Add to cart</a>
                     </div>
@@ -24,4 +30,3 @@
         </div>
     </div>
 </div>
-

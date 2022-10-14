@@ -15,6 +15,13 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getProduct(theProductId: number): Observable<Product> {
+    //build Url based on productId
+    const productUrl = `${this.baseUrl}/${theProductId}`;
+    
+    return this.httpClient.get<Product>(productUrl);
+  }
+
   private getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response => response._embedded.products)
@@ -40,6 +47,8 @@ export class ProductService {
 
     return this.getProducts(searchUrl);
   }
+
+  
 
 }
 
