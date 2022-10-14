@@ -12,7 +12,7 @@ export class ProductDetailsComponent implements OnInit {
 
   product: Product = new Product();
 
-  constructor(private prdocutService: ProductService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe( () => {
@@ -25,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
 
     const theProductId: number = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.prdocutService.getProduct(theProductId).subscribe(
+    this.productService.getProduct(theProductId).subscribe(
       data => {
         this.product = data;
       }
