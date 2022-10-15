@@ -3,10 +3,10 @@ import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart-satus',
-  templateUrl: './cart-satus.component.html',
-  styleUrls: ['./cart-satus.component.css']
+  templateUrl: './cart-status.component.html',
+  styleUrls: ['./cart-status.component.css']
 })
-export class CartSatusComponent implements OnInit {
+export class CartStatusComponent implements OnInit {
 
   totalPrice: number = 0.00;
   totalQuantity: number = 0;
