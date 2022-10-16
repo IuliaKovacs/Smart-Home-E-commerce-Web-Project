@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
-  selector: 'app-cart-satus',
+  selector: 'app-cart-status',
   templateUrl: './cart-status.component.html',
   styleUrls: ['./cart-status.component.css']
 })
