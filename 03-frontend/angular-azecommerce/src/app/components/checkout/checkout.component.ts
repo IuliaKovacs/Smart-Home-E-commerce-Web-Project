@@ -38,6 +38,8 @@ export class CheckoutComponent implements OnInit {
 	            private checkoutService: CheckoutService,
               private router: Router) {
                }
+
+
   ngOnInit(): void {
     
     this.reviewCartDetails();
@@ -165,16 +167,6 @@ export class CheckoutComponent implements OnInit {
     // get cart items
     const cartItems = this.cartService.cartItems;
 
-    // create orderItems from cartItems
-    // - long way
-    /*
-    let orderItems: OrderItem[] = [];
-    for (let i=0; i < cartItems.length; i++) {
-      orderItems[i] = new OrderItem(cartItems[i]);
-    }
-    */
-
-    // - short way of doing the same thingy
     let orderItems: OrderItem[] = cartItems.map(tempCartItem => new OrderItem(tempCartItem.imageUrl!, tempCartItem.unitPrice!, tempCartItem.quantity, tempCartItem.id!));
 
     // set up purchase
