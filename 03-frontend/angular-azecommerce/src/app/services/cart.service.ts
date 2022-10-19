@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../common/cart-item';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +8,26 @@ import { Subject } from 'rxjs';
 export class CartService {
 
   cartItems: CartItem[] = [];
-  
-  totalPrice: Subject<number> = new Subject<number>();
-  totalQuantity: Subject<number> = new Subject<number>();
 
-  constructor() { }
+  totalPrice: Subject<number> = new BehaviorSubject<number>(0);
+  totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
+
+  storage: Storage = sessionStorage;
+  // storage: Storage = localStorage;
+
+  constructor() { 
+
+    // read data from storage
+    let data = JSON.parse(this.storage.getItem('cartItems')!);
+
+    if (data != null) {
+      this.cartItems = data;
+      
+      // compute totals based on the data that is read from storage
+      this.computeCartTotals();
+    }
+
+  }
 
   addToCart(theCartItem: CartItem){
     //check if the type of item is already in cart (to increase quantity)
@@ -66,6 +81,13 @@ export class CartService {
 
     console.log(`totalPrice: ${totalPriceValue.toFixed(2)}, totalQuantity: ${totalQuantityValue}`);
     console.log('----');
+    
+    // persist cart data
+    this.persistCartItems();
+  }
+
+  persistCartItems() {
+    this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
   
   decrementQuantity(theCartItem: CartItem) {
