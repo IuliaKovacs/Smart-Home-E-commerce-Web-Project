@@ -118,7 +118,8 @@ a,a:hover{
 .page-container{
     background-image: url("src/assets/images/bg.jpg");
     background-repeat: no-repeat;
-    padding-left:200px
+    padding-left:200px;
+    padding-top: 110px;
 }
 
 
@@ -208,7 +209,7 @@ section{
 .section-content{
     position:relative;
     margin:0 auto;
-    z-index:1
+    z-index:1;
 }
 
 .section-content-p30{

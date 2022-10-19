@@ -1,9 +1,6 @@
 package com.azsmarthome.ecommerce.config;
 
-import com.azsmarthome.ecommerce.entity.Country;
-import com.azsmarthome.ecommerce.entity.Product;
-import com.azsmarthome.ecommerce.entity.ProductCategory;
-import com.azsmarthome.ecommerce.entity.State;
+import com.azsmarthome.ecommerce.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -33,14 +30,12 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
         HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
 
-        //disable the methods for Product: PUT, POST and DELETE
+        //disable the methods for: PUT, POST and DELETE
         disableHttpMethods(Product.class,config, theUnsupportedActions);
-
-        //disable the methods for ProductCategory: PUT, POST and DELETE
         disableHttpMethods(ProductCategory.class,config, theUnsupportedActions);
-
         disableHttpMethods(Country.class,config, theUnsupportedActions);
         disableHttpMethods(State.class,config, theUnsupportedActions);
+        disableHttpMethods(Order.class, config, theUnsupportedActions);
 
         //call an internal helper method
         exposeIds(config);
