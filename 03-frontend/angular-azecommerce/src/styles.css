@@ -118,7 +118,8 @@ a,a:hover{
 .page-container{
     background-image: url("src/assets/images/bg.jpg");
     background-repeat: no-repeat;
-    padding-left:200px
+    padding-left: 200px;
+    padding-top: 110px;
 }
 
 
@@ -767,5 +768,27 @@ footer ul li{
     padding:10px 20px
 }
 
+/* 
+ * ----------------------------
+ * Login form
+ * ----------------------------
+ */
+
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
 
 
