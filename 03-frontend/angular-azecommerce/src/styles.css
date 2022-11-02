@@ -41,6 +41,7 @@ input{
 button{
     border:none;
     background-color: #0776a3;
+    height: 45px;
 }
 
 img{
@@ -217,7 +218,7 @@ section{
 }
 
 .au-input-xl{
-    min-width:935px
+    min-width:700px
 }
 
 input.au-input.au-input-xl{
@@ -519,7 +520,8 @@ input.au-input.au-input-xl{
  */
 
 .product-box img {
-    width: 250px;
+    width: 200px;
+    height: 180px;
 }
 
 .items select {
@@ -532,9 +534,10 @@ input.au-input.au-input-xl{
     margin-left: 5px;
 }
 .product-box{
-    height: 500px;
-    width: 400px;
-    padding: 20%;
+    height: 450px;
+    width: 280px;
+    padding: 10%;
+    margin: 20px;
     border-radius: 25px;
     background-color: #fff;
 }

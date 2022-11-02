@@ -1,26 +1,25 @@
 package com.azsmarthome.ecommerce.entity;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name="product_category")
+@Table(name="users")
 @Getter
 @Setter
-public class ProductCategory {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "category_name")
-    private String categoryName;
+    @Column(name = "username")
+    private String username;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-    private Set<Product> products;
+    @Column(name = "password")
+    private String password;
+
 }
