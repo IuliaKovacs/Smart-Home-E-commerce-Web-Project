@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/common/user';
 import { RegisterService } from 'src/app/services/register.service';
 import { MyCustomValidators } from 'src/app/validators/my-custom-validators';
 
@@ -26,7 +27,6 @@ export class RegisterComponent implements OnInit {
       emailAddress: new FormControl('', [Validators.required, MyCustomValidators.notOnlyWhitespace, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       username: new FormControl('', [Validators.required, Validators.minLength(4), MyCustomValidators.notOnlyWhitespace]),
       password1: new FormControl('', [Validators.required, MyCustomValidators.notOnlyWhitespace, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&*]).{8,}$')]),
-      password2: new FormControl('', [Validators.required, MyCustomValidators.notOnlyWhitespace, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&*]).{8,}$')])
   })
     
 
@@ -34,15 +34,31 @@ export class RegisterComponent implements OnInit {
 
  
 
-
-
-
   onSubmit(){
+    console.log("Handling user register");
     console.log(this.registerFormGroup.value);
 
     if (this.registerFormGroup.invalid) {
       this.registerFormGroup.markAllAsTouched();
     }
+
+    let user = new User();
+    
+    user.emailAddress = this.registerFormGroup.controls['emailAddress'].value;
+    user.username = this.registerFormGroup.controls['username'].value;
+    user.password = this.registerFormGroup.controls['password1'].value;
+    
+
+    this.registerService.register(user).subscribe({
+      next: response => {
+        alert(`Thank you for registering`);
+
+      },
+      error: err => {
+        alert(`There was an error: ${err.message}`);
+      }
+    }
+    );
 
   }
 

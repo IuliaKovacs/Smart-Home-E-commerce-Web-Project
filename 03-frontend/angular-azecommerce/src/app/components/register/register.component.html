@@ -62,23 +62,6 @@
                         <label class="form-label" for="password1">Password</label>
 
 
-                        <!-- Password second input -->
-
-                        <input type="password" formControlName="password2" class="form-control form-control-lg"
-                            placeholder="Enter password again" />
-                            <div *ngIf="registerFormGroup.controls['password2'].invalid && (registerFormGroup.controls['password2'].dirty || registerFormGroup.controls['password2'].touched)"
-                                class="alert alert-danger mt-1">
-                                <div
-                                    *ngIf="registerFormGroup.controls['password2'].errors['required'] || registerFormGroup.controls['password2'].errors['notOnlyWhitespace']">
-                                    Password is required!
-                                </div>
-                                <div *ngIf="registerFormGroup.controls['password2'].errors['pattern']">
-                                    Password must be a valid format (use upper and lower case letters, digits and at least one speacial character)
-                                </div>
-                            </div>
-                        <label class="form-label" for="password2">Password</label>
-
-
 
                         <div>
                             <button type="submit" class="btn btn-primary">Register now</button>

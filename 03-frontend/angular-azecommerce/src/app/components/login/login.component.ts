@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log("Handling user login");
     console.log(this.loginFormGroup.value);
 
     if (this.loginFormGroup.invalid) {
