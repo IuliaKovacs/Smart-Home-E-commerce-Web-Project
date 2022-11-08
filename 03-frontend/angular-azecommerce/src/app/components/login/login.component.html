@@ -7,28 +7,47 @@
                             class="img-fluid" alt="Sample image">
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                        <form>
+                        <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
 
 
                             <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <input type="email" id="form3Example3" class="form-control form-control-lg"
-                                    placeholder="Enter a valid email address" />
-                                <label class="form-label" for="form3Example3">Email address</label>
+                            
+                            <input type="text" formControlName="emailAddress" class="form-control form-control-lg"
+                                placeholder="Enter email address" />
+                            <div *ngIf="loginFormGroup.controls['emailAddress'].invalid && (loginFormGroup.controls['emailAddress'].dirty || loginFormGroup.controls['emailAddress'].touched)"
+                                class="alert alert-danger mt-1">
+                                <div
+                                    *ngIf="loginFormGroup.controls['emailAddress'].errors['required'] || loginFormGroup.controls['emailAddress'].errors['notOnlyWhitespace']">
+                                    Email address is required!
+                                </div>
+                                <div *ngIf="loginFormGroup.controls['emailAddress'].errors['pattern']">
+                                    Email must be a valid email address format
+                                </div>
                             </div>
+                            <label class="form-label" for="emailAddress">Email address</label>
+
+
 
                             <!-- Password input -->
-                            <div class="form-outline mb-3">
-                                <input type="password" id="form3Example4" class="form-control form-control-lg"
-                                    placeholder="Enter password" />
-                                <label class="form-label" for="form3Example4">Password</label>
+                            
+                            <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Enter password" />
+                            <div *ngIf="loginFormGroup.controls['password'].invalid && (loginFormGroup.controls['password'].dirty || loginFormGroup.controls['password'].touched)"
+                                class="alert alert-danger mt-1">
+                                <div
+                                    *ngIf="loginFormGroup.controls['password'].errors['required'] || loginFormGroup.controls['password'].errors['notOnlyWhitespace']">
+                                    Password is required!
+                                </div>
+                                <div *ngIf="loginFormGroup.controls['password'].errors['pattern']">
+                                    Password must be a valid format (use upper and lower case letters, digits and at least one speacial character)
+                                </div>
                             </div>
+                            <label class="form-label" for="password1">Password</label>
 
 
                             <div>
                                 <p>Don't have an account? </p>
                                 <button routerLink="/register" type="button" class="btn btn-primary" style="margin-right: 100px;">Register</button>
-                                <button type="button" class="btn btn-primary">Log in</button>
+                                <button type="submit" class="btn btn-primary">Log in</button>
                             </div>
 
                         </form>
