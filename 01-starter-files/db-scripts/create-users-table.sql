@@ -16,7 +16,7 @@ SET FOREIGN_KEY_CHECKS=1;
 --
 CREATE TABLE `users` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `emailAddress` varchar(255) DEFAULT NULL,
+  `email_address` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)

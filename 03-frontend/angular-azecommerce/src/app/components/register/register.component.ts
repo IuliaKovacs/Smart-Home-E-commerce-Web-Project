@@ -38,9 +38,8 @@ export class RegisterComponent implements OnInit {
     console.log("Handling user register");
     console.log(this.registerFormGroup.value);
 
-    if (this.registerFormGroup.invalid) {
-      this.registerFormGroup.markAllAsTouched();
-    }
+    this.registerFormGroup.markAllAsTouched();
+    
 
     let user = new User();
     
@@ -49,16 +48,24 @@ export class RegisterComponent implements OnInit {
     user.password = this.registerFormGroup.controls['password1'].value;
     
 
-    this.registerService.register(user).subscribe({
-      next: response => {
-        alert(`Thank you for registering`);
-
-      },
-      error: err => {
-        alert(`There was an error: ${err.message}`);
+    if (user.password !== '' && user.emailAddress !== '' && user.username !== ''){
+      this.registerService.register(user).subscribe({
+        next: response => {
+          alert(`Thank you for registering`);
+          this.router.navigateByUrl("/login");
+        },
+        error: err => {
+          alert(`There was an error: ${err.message}`);
+        }
       }
+      );
     }
-    );
+    else {
+      alert(`Insert the credentials!`);
+    }
+
+
+    
 
   }
 
