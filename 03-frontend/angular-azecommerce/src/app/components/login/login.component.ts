@@ -15,6 +15,8 @@ import { MyCustomValidators } from 'src/app/validators/my-custom-validators';
 })
 export class LoginComponent implements OnInit {
 
+  storage: Storage = sessionStorage;
+
   loginFormGroup: FormGroup;
 
   users: User[] = [];
@@ -34,12 +36,20 @@ export class LoginComponent implements OnInit {
   
   }
 
+  getEmailAddress(): string{
+    return this.loginFormGroup.controls['emailAddress'].value;
+  }
+
+  getPassword(): string{
+    return this.loginFormGroup.controls['password'].value;
+  }
+
   onSubmit(){
     //console.log("Handling user login");
     //console.log(this.loginFormGroup.value);
 
-    let email = this.loginFormGroup.controls['emailAddress'].value;
-    let password = this.loginFormGroup.controls['password'].value;
+    let email = this.getEmailAddress();
+    let password = this.getPassword();
 
     //get all the users
     this.loginService.getUsers().subscribe(data => {
@@ -52,6 +62,7 @@ export class LoginComponent implements OnInit {
       let wrongCredentialsFlag = true;
       for (let user of this.users){
         if (user.emailAddress === email && user.password === this.registerService.encriptPassword(password)){
+          this.retainUserDetails();
           console.log("Login with success!")
           //alert(`Thank you for logging in`);
           wrongCredentialsFlag = false;
@@ -66,11 +77,17 @@ export class LoginComponent implements OnInit {
     else {
       alert(`Insert the credentials!`);
     }
-    
-    
-  
   }
 
+  retainUserDetails(){
+    // retrieve the user's email from authentication response
+    const theEmail = this.getEmailAddress();
+
+    console.log(theEmail);
+
+    // now store the email in browser storage
+    this.storage.setItem('userEmail', JSON.stringify(theEmail));
+  }
 
 
 }

@@ -23,7 +23,7 @@ import { EncryptionService } from './services/encryption.service';
 
 
 const routes: Routes = [
-  {path: 'order-history', component: OrderHistoryComponent }
+  {path: 'order-history', component: OrderHistoryComponent },
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'checkout', component: CheckoutComponent},
@@ -47,7 +47,7 @@ const routes: Routes = [
     CartStatusComponent,
     CartDetailsComponent,
     CheckoutComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
     LoginComponent,
     RegisterComponent
   ],
