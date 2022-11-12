@@ -46,7 +46,12 @@ export class RegisterComponent implements OnInit {
     user.emailAddress = this.registerFormGroup.controls['emailAddress'].value;
     user.username = this.registerFormGroup.controls['username'].value;
     user.password = this.registerFormGroup.controls['password1'].value;
+
+    let encriptedPassword = this.registerService.encriptPassword(user.password);
     
+    // console.log(encriptedPassword);
+
+    user.password = encriptedPassword;
 
     if (user.password !== '' && user.emailAddress !== '' && user.username !== ''){
       this.registerService.register(user).subscribe({

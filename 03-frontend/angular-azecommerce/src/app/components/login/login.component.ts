@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { User } from 'src/app/common/user';
 import { LoginService } from 'src/app/services/login.service';
+import { RegisterService } from 'src/app/services/register.service';
 import { MyCustomValidators } from 'src/app/validators/my-custom-validators';
 
 
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private loginService: LoginService,
+              private registerService: RegisterService,
               private router: Router) { 
       
     }
@@ -47,13 +49,19 @@ export class LoginComponent implements OnInit {
     //console.log(this.users);
 
     if (email !== '' && password !== ''){
+      let wrongCredentialsFlag = true;
       for (let user of this.users){
-        if (user.emailAddress === email && user.password === password){
+        if (user.emailAddress === email && user.password === this.registerService.encriptPassword(password)){
           console.log("Login with success!")
           //alert(`Thank you for logging in`);
+          wrongCredentialsFlag = false;
           this.router.navigateByUrl("/products");
         }
       }  
+
+      if (wrongCredentialsFlag == true){
+        alert(`Wrong email or password!\nPlease try again!`);
+      }
     }
     else {
       alert(`Insert the credentials!`);

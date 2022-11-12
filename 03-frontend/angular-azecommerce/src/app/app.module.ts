@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
+import { EncryptionService } from './services/encryption.service';
+
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -55,7 +57,7 @@ const routes: Routes = [
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, EncryptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
