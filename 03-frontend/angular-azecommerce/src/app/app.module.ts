@@ -20,9 +20,11 @@ import { OrderHistoryComponent } from './components/order-history/order-history.
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { EncryptionService } from './services/encryption.service';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 const routes: Routes = [
+  {path: 'about-us', component: AboutUsComponent },
   {path: 'order-history', component: OrderHistoryComponent },
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
@@ -49,7 +51,8 @@ const routes: Routes = [
     CheckoutComponent,
     OrderHistoryComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AboutUsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
