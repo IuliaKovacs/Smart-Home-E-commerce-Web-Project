@@ -16,13 +16,14 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-
 import { EncryptionService } from './services/encryption.service';
 
 
 const routes: Routes = [
+  {path: 'order-history', component: OrderHistoryComponent }
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'checkout', component: CheckoutComponent},
@@ -46,6 +47,7 @@ const routes: Routes = [
     CartStatusComponent,
     CartDetailsComponent,
     CheckoutComponent,
+    OrderHistoryComponent
     LoginComponent,
     RegisterComponent
   ],
