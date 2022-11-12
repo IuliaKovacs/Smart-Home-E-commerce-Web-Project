@@ -1,0 +1,75 @@
+<div class="detail-section">
+    <div class="container-fluid">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-10" style="margin-bottom: 90px;">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                        class="img-fluid" alt="Sample image">
+                </div>
+
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form [formGroup]="registerFormGroup" (ngSubmit)="onSubmit()">
+
+
+                        <!-- Email input -->
+
+                        <input type="text" formControlName="emailAddress" class="form-control form-control-lg"
+                            placeholder="Enter a valid email address" />
+                        <div *ngIf="registerFormGroup.controls['emailAddress'].invalid && (registerFormGroup.controls['emailAddress'].dirty || registerFormGroup.controls['emailAddress'].touched)"
+                            class="alert alert-danger mt-1">
+                            <div *ngIf="registerFormGroup.controls['emailAddress'].errors['required'] || registerFormGroup.controls['emailAddress'].errors['notOnlyWhitespace']">
+                                Email address is required!
+                            </div>
+                            <div *ngIf="registerFormGroup.controls['emailAddress'].errors['pattern']">
+                                Email must be a valid email address format
+                            </div>
+                        </div>
+                        <label class="form-label" for="emailAddress">Email address</label>
+
+
+                        <!-- Username input -->
+
+                        <input type="text" formControlName="username" class="form-control form-control-lg"
+                            placeholder="Enter a valid username" />
+                        <div *ngIf="registerFormGroup.controls['username'].invalid && (registerFormGroup.controls['username'].dirty || registerFormGroup.controls['username'].touched)"
+                            class="alert alert-danger mt-1">
+                            <div *ngIf="registerFormGroup.controls['username'].errors['required'] || registerFormGroup.controls['username'].errors['notOnlyWhitespace']">
+                                Username is required!
+                            </div>
+                            <div *ngIf="registerFormGroup.controls['username'].errors['minlength']">
+                                Username must be at least 4 characters long
+                            </div>
+                        </div>
+                        <label class="form-label" for="emailAddress">Username</label>
+
+
+
+
+                        <!-- Password input -->
+
+                        <input type="password" formControlName="password1" class="form-control form-control-lg"
+                            placeholder="Enter password" />
+                            <div *ngIf="registerFormGroup.controls['password1'].invalid && (registerFormGroup.controls['password1'].dirty || registerFormGroup.controls['password1'].touched)"
+                                class="alert alert-danger mt-1">
+                                <div
+                                    *ngIf="registerFormGroup.controls['password1'].errors['required'] || registerFormGroup.controls['password1'].errors['notOnlyWhitespace']">
+                                    Password is required!
+                                </div>
+                                <div *ngIf="registerFormGroup.controls['password1'].errors['pattern']">
+                                    Password must be a valid format (use upper and lower case letters, digits and at least one speacial character)
+                                </div>
+                            </div>
+                        <label class="form-label" for="password1">Password</label>
+
+
+
+                        <div>
+                            <button type="submit" class="btn btn-primary">Register now</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
