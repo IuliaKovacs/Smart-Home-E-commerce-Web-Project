@@ -41,6 +41,7 @@ input{
 button{
     border:none;
     background-color: #0776a3;
+    height: 45px;
 }
 
 img{
@@ -118,7 +119,7 @@ a,a:hover{
 .page-container{
     background-image: url("src/assets/images/bg.jpg");
     background-repeat: no-repeat;
-    padding-left:200px;
+    padding-left: 200px;
     padding-top: 110px;
 }
 
@@ -217,7 +218,7 @@ section{
 }
 
 .au-input-xl{
-    min-width:935px
+    min-width:700px
 }
 
 input.au-input.au-input-xl{
@@ -519,7 +520,8 @@ input.au-input.au-input-xl{
  */
 
 .product-box img {
-    width: 250px;
+    width: 200px;
+    height: 180px;
 }
 
 .items select {
@@ -532,9 +534,10 @@ input.au-input.au-input-xl{
     margin-left: 5px;
 }
 .product-box{
-    height: 500px;
-    width: 400px;
-    padding: 20%;
+    height: 450px;
+    width: 280px;
+    padding: 10%;
+    margin: 20px;
     border-radius: 25px;
     background-color: #fff;
 }
@@ -768,5 +771,27 @@ footer ul li{
     padding:10px 20px
 }
 
+/* 
+ * ----------------------------
+ * Login form
+ * ----------------------------
+ */
+
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
 
 

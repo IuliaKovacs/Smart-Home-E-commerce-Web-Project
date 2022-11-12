@@ -17,10 +17,15 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { EncryptionService } from './services/encryption.service';
 
 
 const routes: Routes = [
-  {path: 'order-history', component: OrderHistoryComponent },
+  {path: 'order-history', component: OrderHistoryComponent }
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
@@ -43,6 +48,8 @@ const routes: Routes = [
     CartDetailsComponent,
     CheckoutComponent,
     OrderHistoryComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -52,7 +59,7 @@ const routes: Routes = [
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, EncryptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
