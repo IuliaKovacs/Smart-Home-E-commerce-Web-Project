@@ -20,6 +20,7 @@ export class AppComponent {
     console.log("Logging off...")
     this.router.navigateByUrl("/login");
     this.loginService.resetIsLoggedIn();
+    this.loginService.resetIsAdmin();
   }
 
 

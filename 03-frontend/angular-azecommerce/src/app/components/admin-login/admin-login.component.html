@@ -1,0 +1,47 @@
+<div class="detail-section">
+    <div class="container-fluid">
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-10" style="margin-bottom: 110px;">
+                    <div class="col-md-9 col-lg-6 col-xl-5">
+                        <img src="https://findicons.com/files/icons/2526/bloggers/256/admin.png" style="margin-left: 110px;" style="height: 400px;">
+                    </div>
+                    <div class="col-md-8 col-lg-4">
+                        <form [formGroup]="adminFormGroup" (ngSubmit)="onSubmit()">
+
+                            <!-- Security key input -->
+                            
+                            <input type="password" formControlName="securityKey" class="form-control form-control-lg" placeholder="Enter securityKey" />
+                            <div *ngIf="adminFormGroup.controls['securityKey'].invalid && (adminFormGroup.controls['securityKey'].dirty || adminFormGroup.controls['securityKey'].touched)"
+                                class="alert alert-danger mt-1">
+                                <div
+                                    *ngIf="adminFormGroup.controls['securityKey'].errors['required'] || adminFormGroup.controls['securityKey'].errors['notOnlyWhitespace']">
+                                    Security Key is required!
+                                </div>
+                            </div>
+                            <label class="form-label" for="securityKey1">Security Key</label>
+
+
+                            <!-- Password input -->
+                            
+                            <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Enter password" />
+                            <div *ngIf="adminFormGroup.controls['password'].invalid && (adminFormGroup.controls['password'].dirty || adminFormGroup.controls['password'].touched)"
+                                class="alert alert-danger mt-1">
+                                <div
+                                    *ngIf="adminFormGroup.controls['password'].errors['required'] || adminFormGroup.controls['password'].errors['notOnlyWhitespace']">
+                                    Password is required!
+                                </div>
+                            </div>
+                            <label class="form-label" for="password1">Password</label>
+
+
+                            <div>
+                                <button routerLink="/login" type="button" class="btn btn-primary" style="margin-right: 100px;">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Log in</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

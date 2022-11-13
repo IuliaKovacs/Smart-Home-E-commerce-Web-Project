@@ -22,9 +22,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { EncryptionService } from './services/encryption.service';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoggedOffGuard } from './logged-off.guard';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { AdminAddProductComponent } from './components/admin-add-product/admin-add-product.component';
 
 
 const routes: Routes = [
+  {path: 'admin-login', component: AdminLoginComponent},
   {path: 'about-us', component: AboutUsComponent, canActivate: [LoggedOffGuard]},
   {path: 'order-history', component: OrderHistoryComponent, canActivate: [LoggedOffGuard]},
   {path: 'register', component: RegisterComponent},
@@ -53,7 +56,9 @@ const routes: Routes = [
     OrderHistoryComponent,
     LoginComponent,
     RegisterComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    AdminLoginComponent,
+    AdminAddProductComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

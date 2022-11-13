@@ -35,6 +35,15 @@ export class LoginService {
     this.storage.setItem('userEmail', JSON.stringify(''));
   }
 
+  setIsAdmin(){
+    this.storage.setItem('isAdmin', JSON.stringify(true)); 
+  }
+
+  resetIsAdmin(){
+    this.storage.setItem('isAdmin', JSON.stringify(false)); 
+  }
+
+
 }
 
 
