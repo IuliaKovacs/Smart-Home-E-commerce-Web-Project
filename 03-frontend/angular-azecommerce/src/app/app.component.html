@@ -12,7 +12,13 @@
 
     <app-product-category-menu></app-product-category-menu>
 
+
+    <button *ngIf="this.isVisible()" routerLink="/admin-add-product" class="btn btn-info1">
+      Add new product
+    </button>
+
   </aside>
+  
   <!-- END MENU SIDEBAR-->
 
 <!-- PAGE CONTAINER-->

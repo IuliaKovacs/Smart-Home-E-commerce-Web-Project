@@ -46,6 +46,7 @@ export class AdminLoginComponent implements OnInit {
           console.log("Here comes the admin!");
           this.loginService.setIsAdmin();
           this.loginService.setIsLoggedIn();
+          this.storage.setItem('isVisible', JSON.stringify(true)); 
           this.router.navigateByUrl("/products");
       }
       else {

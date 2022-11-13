@@ -27,6 +27,7 @@ import { AdminAddProductComponent } from './components/admin-add-product/admin-a
 
 
 const routes: Routes = [
+  {path: 'admin-add-product', component: AdminAddProductComponent},
   {path: 'admin-login', component: AdminLoginComponent},
   {path: 'about-us', component: AboutUsComponent, canActivate: [LoggedOffGuard]},
   {path: 'order-history', component: OrderHistoryComponent, canActivate: [LoggedOffGuard]},
