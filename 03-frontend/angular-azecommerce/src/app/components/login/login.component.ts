@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
               private registerService: RegisterService,
               private router: Router) { 
       
-    }
+  }
 
   ngOnInit(): void {
     this.loginFormGroup = new FormGroup({
@@ -63,6 +63,7 @@ export class LoginComponent implements OnInit {
       for (let user of this.users){
         if (user.emailAddress === email && user.password === this.registerService.encriptPassword(password)){
           this.retainUserDetails();
+          this.loginService.setIsLoggedIn();
           console.log("Login with success!")
           //alert(`Thank you for logging in`);
           wrongCredentialsFlag = false;
@@ -88,6 +89,7 @@ export class LoginComponent implements OnInit {
     // now store the email in browser storage
     this.storage.setItem('userEmail', JSON.stringify(theEmail));
   }
+
 
 
 }

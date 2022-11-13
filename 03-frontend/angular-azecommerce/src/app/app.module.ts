@@ -21,22 +21,23 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { EncryptionService } from './services/encryption.service';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { LoggedOffGuard } from './logged-off.guard';
 
 
 const routes: Routes = [
-  {path: 'about-us', component: AboutUsComponent },
-  {path: 'order-history', component: OrderHistoryComponent },
+  {path: 'about-us', component: AboutUsComponent, canActivate: [LoggedOffGuard]},
+  {path: 'order-history', component: OrderHistoryComponent, canActivate: [LoggedOffGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'checkout', component: CheckoutComponent},
-  {path: 'cart-details', component: CartDetailsComponent},
-  {path: 'products/:id', component: ProductDetailsComponent},
-  {path: 'search/:keyword', component: ProductListComponent},
-  {path: 'category/:id', component: ProductListComponent},
-  {path: 'category', component: ProductListComponent},
-  {path: 'products', component: ProductListComponent},
-  {path: '', redirectTo: '/products', pathMatch: 'full'},
-  {path: '**', redirectTo: '/products', pathMatch: 'full'}
+  {path: 'checkout', component: CheckoutComponent, canActivate: [LoggedOffGuard]},
+  {path: 'cart-details', component: CartDetailsComponent, canActivate: [LoggedOffGuard]},
+  {path: 'products/:id', component: ProductDetailsComponent, canActivate: [LoggedOffGuard]},
+  {path: 'search/:keyword', component: ProductListComponent, canActivate: [LoggedOffGuard]},
+  {path: 'category/:id', component: ProductListComponent, canActivate: [LoggedOffGuard]},
+  {path: 'category', component: ProductListComponent, canActivate: [LoggedOffGuard]},
+  {path: 'products', component: ProductListComponent, canActivate: [LoggedOffGuard]},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({

@@ -8,7 +8,9 @@ import { map, Observable } from 'rxjs';
 })
 export class LoginService {
 
-  private usersUrl = 'http://localhost:8080/api/users'
+  private usersUrl = 'http://localhost:8080/api/users';
+
+  storage: Storage = sessionStorage;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -22,6 +24,15 @@ export class LoginService {
     return this.httpClient.get<GetResponseUsers>(this.usersUrl).pipe(
       map(response => response._embedded.users)
     );
+  }
+
+  setIsLoggedIn(){
+    this.storage.setItem('isLoggedIn', JSON.stringify(true));
+  }
+
+  resetIsLoggedIn(){
+    this.storage.setItem('isLoggedIn', JSON.stringify(false)); 
+    this.storage.setItem('userEmail', JSON.stringify(''));
   }
 
 }
