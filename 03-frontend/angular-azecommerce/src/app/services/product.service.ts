@@ -9,6 +9,7 @@ import { ProductCategory } from '../common/product-category';
   providedIn: 'root'
 })
 export class ProductService {
+
   
   private baseUrl = 'http://localhost:8080/api/products';
 
@@ -65,6 +66,9 @@ export class ProductService {
     return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
   
+  addProduct(newProduct: Product) {
+    return this.httpClient.post<Product>(this.baseUrl, newProduct);
+  }
 
 }
 

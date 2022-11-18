@@ -14,13 +14,26 @@ import java.util.Date;
 
 public class Product {
 
+    public Product(Long id, ProductCategory category, String sku, String name, String description, BigDecimal unitPrice, String imageUrl, boolean active, int unitsInStock) {
+        this.id = id;
+        this.category = category;
+        this.sku = sku;
+        this.name = name;
+        this.description = description;
+        this.unitPrice = unitPrice;
+        this.imageUrl = imageUrl;
+        this.active = active;
+        this.unitsInStock = unitsInStock;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     private ProductCategory category;
 
     @Column(name = "sku")
@@ -51,4 +64,8 @@ public class Product {
     @Column(name = "last_updated")
     @UpdateTimestamp
     private Date lastUpdated;
+
+    public Product() {
+
+    }
 }

@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `full-stack-ecommerce`.`product` (
   `units_in_stock` INT(11) DEFAULT NULL,
    `date_created` DATETIME(6) DEFAULT NULL,
   `last_updated` DATETIME(6) DEFAULT NULL,
-  `category_id` BIGINT(20) NOT NULL,
+  `category_id` BIGINT(20),
   PRIMARY KEY (`id`),
   KEY `fk_category` (`category_id`),
   CONSTRAINT `fk_category` FOREIGN KEY (`category_id`) REFERENCES `product_category` (`id`)

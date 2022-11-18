@@ -1,1 +1,60 @@
-<p>admin-add-product works!</p>
+<div class="detail-section">
+    <div class="container-fluid">
+        <div class="container-fluid h-custom">
+
+            <div style="margin-left: 300px;" class="col-lg-8 ">
+                <form [formGroup]="productFormGroup" (ngSubmit)="addNewProduct()">
+
+                    <!-- SKU input -->
+
+                    <input type="text" formControlName="sku" class="form-control form-control-lg"
+                        placeholder="Enter the SKU" />
+                    <label class="form-label" for="sku">Stock Keeping Unit</label>
+
+                    <!-- Name input -->
+
+                    <input type="text" formControlName="name" class="form-control form-control-lg"
+                        placeholder="Enter product name" />
+                    <label class="form-label" for="name">Product name</label>
+
+                    <!-- Description input -->
+
+                    <input type="text" formControlName="description" class="form-control form-control-lg"
+                        placeholder="Enter description" />
+                    <label class="form-label" for="description">Description</label>
+
+                    <!-- Unit price input -->
+
+                    <input type="text" formControlName="unitPrice" class="form-control form-control-lg"
+                        placeholder="Enter unit price" />
+                    <label class="form-label" for="unitPrice">Unit Price</label>
+
+                    <!-- Image Url input -->
+
+                    <input type="text" formControlName="imageUrl" class="form-control form-control-lg"
+                        placeholder="Enter image Url" />
+                    <label class="form-label" for="imageUrl">Image URL</label>
+
+                    <!-- Units in stock input -->
+
+                    <input type="text" formControlName="unitsInStock" class="form-control form-control-lg"
+                        placeholder="Enter units in stock" />
+                    <label class="form-label" for="unitsInStock">Units in stock</label>
+
+                    <!-- Category input -->
+
+                    <select formControlName="category" class="form-control form-control-lg">
+                        <option>Smart Lighting</option>
+                        <option>Security and Surveillance</option>
+                        <option>Smart Thermostats</option>
+                    </select>
+                    <label class="form-label" for="category">Choose category</label>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary">Add product</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,6 +1,7 @@
 package com.azsmarthome.ecommerce.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,12 @@ import java.util.Set;
 @Setter
 public class ProductCategory {
 
+    public ProductCategory(Long id, String categoryName, Set<Product> products) {
+        this.id = id;
+        this.categoryName = categoryName;
+        this.products = products;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,6 +28,11 @@ public class ProductCategory {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    @JsonBackReference
+    @OneToMany(mappedBy = "category")
     private Set<Product> products;
+
+    public ProductCategory() {
+
+    }
 }

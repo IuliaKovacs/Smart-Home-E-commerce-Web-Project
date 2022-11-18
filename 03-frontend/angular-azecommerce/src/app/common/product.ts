@@ -1,3 +1,5 @@
+import { ProductCategory } from "./product-category";
+
 export class Product {
     id: string;
     sku: string;
@@ -9,4 +11,5 @@ export class Product {
     unitsInStock: number;
     dateCreated: Date;
     lastUpdate: Date;
+    category: ProductCategory;
 }
