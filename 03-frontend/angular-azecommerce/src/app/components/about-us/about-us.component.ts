@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
+  username: String;
+  
+  storage: Storage = sessionStorage;
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.username = JSON.parse(this.storage.getItem('username')!);
   }
 
 }

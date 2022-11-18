@@ -44,28 +44,30 @@ export class AdminAddProductComponent implements OnInit {
     newProduct.unitsInStock = this.productFormGroup.controls['unitsInStock'].value;
   
     let category = this.productFormGroup.controls['category'].value;
-    newProduct.category = this.getCategory(category);
+    let categoryId = this.getCategoryId(category);
+    let productId;
 
     console.log(newProduct);
+    console.log(this.getCategoryId(category));
 
     if (newProduct.sku !== '' && newProduct.name !== '' && newProduct.description !== '' && newProduct.unitPrice !== null
     && newProduct.imageUrl !== '' && newProduct.unitsInStock !== null){
       this.productService.addProduct(newProduct).subscribe({
         next: response => {
-          alert(`Thank you for adding new products!`);
+          console.log(response);
           this.router.navigateByUrl("/products");
+          this.productService.linkProductToCategory(Number(response),categoryId);
         },
         error: err => {
-          alert(`There was an error: ${err.message}`);
+          alert(`There was an error with linking product to Category: ${err.message}`);
         }
       }
       );
+      
     }
-
-
   }
   
-  getCategory(category: string): ProductCategory{
+  getCategoryId(category: string): number{
     let cat = new ProductCategory();
     cat.categoryName = category;
     if (category === "Smart Lighting"){
@@ -78,7 +80,7 @@ export class AdminAddProductComponent implements OnInit {
           cat.id = 3;
         }
 
-    return cat;
+    return cat.id;
   }
 
 }

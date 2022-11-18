@@ -15,6 +15,8 @@ export class ProductService {
 
   private categoryUrl = 'http://localhost:8080/api/product-category';
 
+  private products: Product[] = [];
+
   constructor(private httpClient: HttpClient) { }
 
   getProduct(theProductId: number): Observable<Product> {
@@ -70,6 +72,20 @@ export class ProductService {
     return this.httpClient.post<Product>(this.baseUrl, newProduct);
   }
 
+  linkProductToCategory(productId: number, categoryId: number) {
+    let linkProductToCategoryURL = `${this.categoryUrl}/${categoryId}/products/${productId}`;
+    console.log(linkProductToCategoryURL);
+    this.httpClient.put(linkProductToCategoryURL, null).subscribe({
+      next: response => {
+        alert(`Thank you for linking!`);
+      },
+      error: err => {
+        alert(`There was an error: ${err.message}`);
+      }
+    }
+    );
+  }
+
 }
 
 interface GetResponseProducts {
@@ -84,8 +100,6 @@ interface GetResponseProducts {
   }
 
 }
-
-
 
 interface GetResponseProductCategory {
   _embedded: {

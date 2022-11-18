@@ -63,6 +63,7 @@ export class LoginComponent implements OnInit {
         if (user.emailAddress === email && user.password === this.registerService.encriptPassword(password)){
           this.retainUserDetails();
           this.loginService.setIsLoggedIn();
+          this.loginService.setUsername(user.username);
           console.log("Login with success!")
           //alert(`Thank you for logging in`);
           wrongCredentialsFlag = false;

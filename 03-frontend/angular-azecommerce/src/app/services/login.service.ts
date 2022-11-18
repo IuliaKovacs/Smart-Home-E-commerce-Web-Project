@@ -33,6 +33,7 @@ export class LoginService {
   resetIsLoggedIn(){
     this.storage.setItem('isLoggedIn', JSON.stringify(false)); 
     this.storage.setItem('userEmail', JSON.stringify(''));
+    this.storage.setItem('username', JSON.stringify(''));
   }
 
   setIsAdmin(){
@@ -41,6 +42,10 @@ export class LoginService {
 
   resetIsAdmin(){
     this.storage.setItem('isAdmin', JSON.stringify(false)); 
+  }
+
+  setUsername(username){
+    this.storage.setItem('username', JSON.stringify(username)); 
   }
 
 

@@ -11,7 +11,6 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
-@RequestMapping("api/product-category")
 public class ProductCategoryController {
 
     @Autowired
@@ -20,17 +19,17 @@ public class ProductCategoryController {
     @Autowired
     ProductRepository productRepository;
 
-    @GetMapping
+    @GetMapping("/product-category")
     List<ProductCategory> getProductCategorys() {
         return productCategoryRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/product-category")
     ProductCategory createProductCategory(@RequestBody ProductCategory productCategory) {
         return productCategoryRepository.save(productCategory);
     }
 
-    @PutMapping("/{productCategoryId}/products/{productId}")
+    @PutMapping("/api/product-category/{productCategoryId}/products/{productId}")
     Product assignProductCategoryToProduct(
             @PathVariable Long productCategoryId,
             @PathVariable Long productId

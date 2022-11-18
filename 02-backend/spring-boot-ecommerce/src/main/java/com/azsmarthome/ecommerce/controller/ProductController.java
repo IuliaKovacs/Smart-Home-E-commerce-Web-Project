@@ -11,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
-@RequestMapping("products")
+@RequestMapping("api/products")
 public class ProductController {
 
     @Autowired
@@ -26,8 +26,9 @@ public class ProductController {
     }
 
     @PostMapping
-    Product createProduct(@RequestBody Product product) {
-        return productRepository.save(product);
+    Long createProduct(@RequestBody Product product) {
+        productRepository.save(product);
+        return product.getId();
     }
 
 }
