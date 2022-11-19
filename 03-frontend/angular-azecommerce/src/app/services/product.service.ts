@@ -77,7 +77,7 @@ export class ProductService {
     console.log(linkProductToCategoryURL);
     this.httpClient.put(linkProductToCategoryURL, null).subscribe({
       next: response => {
-        alert(`Thank you for linking!`);
+        //alert(`Thank you for linking!`);
       },
       error: err => {
         alert(`There was an error: ${err.message}`);

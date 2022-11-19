@@ -55,17 +55,16 @@ export class LoginComponent implements OnInit {
       this.users = data;
     });
 
-    //console.log(this.users);
-
     if (email !== '' && password !== ''){
       let wrongCredentialsFlag = true;
       for (let user of this.users){
+        console.log(user);
         if (user.emailAddress === email && user.password === this.registerService.encriptPassword(password)){
           this.retainUserDetails();
           this.loginService.setIsLoggedIn();
           this.loginService.setUsername(user.username);
           console.log("Login with success!")
-          //alert(`Thank you for logging in`);
+          alert(`Thank you for logging in`);
           wrongCredentialsFlag = false;
           this.router.navigateByUrl("/products");
         }
@@ -83,8 +82,6 @@ export class LoginComponent implements OnInit {
   retainUserDetails(){
     // retrieve the user's email from authentication response
     const theEmail = this.getEmailAddress();
-
-    console.log(theEmail);
 
     // now store the email in browser storage
     this.storage.setItem('userEmail', JSON.stringify(theEmail));

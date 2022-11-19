@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin("http://localhost:4200")
-@RestController
+@RestController("/product-category")
 public class ProductCategoryController {
 
     @Autowired
@@ -19,7 +19,7 @@ public class ProductCategoryController {
     @Autowired
     ProductRepository productRepository;
 
-    @GetMapping("/product-category")
+    @GetMapping
     List<ProductCategory> getProductCategorys() {
         return productCategoryRepository.findAll();
     }

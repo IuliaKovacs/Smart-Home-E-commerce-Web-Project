@@ -630,9 +630,6 @@ input.au-input.au-input-xl{
     -moz-border-radius:2px;
     border-radius:2px
 }
-.au-checkbox:hover input~.au-checkmark{
-    background-color:transparent
-}
 .au-checkbox input:checked~.au-checkmark{
     background-color:#fff
 }

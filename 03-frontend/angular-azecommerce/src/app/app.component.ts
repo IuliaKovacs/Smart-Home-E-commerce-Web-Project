@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -13,11 +14,12 @@ export class AppComponent {
   storage: Storage = sessionStorage;
 
   constructor( private router: Router,
-               private loginService: LoginService
+               private loginService: LoginService,
               ){}
 
 
   logOff(){
+    sessionStorage.clear();
     console.log("Logging off...");
     this.router.navigateByUrl("/login");
     this.loginService.resetIsLoggedIn();
