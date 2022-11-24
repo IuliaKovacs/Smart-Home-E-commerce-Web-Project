@@ -64,15 +64,15 @@ export class LoginComponent implements OnInit {
           this.loginService.setIsLoggedIn();
           this.loginService.setUsername(user.username);
           console.log("Login with success!")
-          alert(`Thank you for logging in`);
+          // alert(`Thank you for logging in`);
           wrongCredentialsFlag = false;
           this.router.navigateByUrl("/products");
         }
       }  
 
-      if (wrongCredentialsFlag == true){
-        alert(`Wrong email or password!\nPlease try again!`);
-      }
+      // if (wrongCredentialsFlag == true){
+      //   alert(`Wrong email or password!\nPlease try again!`);
+      // }
     }
     else {
       alert(`Insert the credentials!`);

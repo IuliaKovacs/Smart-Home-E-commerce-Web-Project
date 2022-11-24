@@ -4,7 +4,7 @@
             <h3 style="color: white ;" >Your Orders</h3>
 
             <div *ngIf="orderHistoryList.length > 0">
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="margin-bottom: 500px;">
                     <tr>
                         <th width="20%">Order Tracking Number</th>
                         <th width="10%">Total Price</th>
@@ -30,7 +30,7 @@
             </div>
 
             <!-- if order history is empty then display a message -->
-            <div *ngIf="orderHistoryList.length == 0" class="alert alert-warning col-md-12" role="alert">
+            <div *ngIf="orderHistoryList.length == 0" class="alert alert-warning col-md-12" role="alert" style="margin-bottom: 500px;">
                 No orders found.
             </div>
 
